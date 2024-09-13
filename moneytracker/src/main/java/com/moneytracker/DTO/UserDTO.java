@@ -1,60 +1,37 @@
 package com.moneytracker.DTO;
 
 import com.moneytracker.Entity.UserEntity;
+import lombok.Getter;
+import lombok.Setter;
 
+@Setter
+@Getter
 public class UserDTO {
 
     private Integer id;
     private String name;
-    private Double amount;
     private String transactionName;
+    private Double amount;
 
-    public String getTransactionName() {
-        return transactionName;
+
+    public UserDTO() {
+
     }
 
-    public void setTransactionName(String transactionName) {
-        this.transactionName = transactionName;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Double getAmount() {
-        return amount;
-    }
-
-    public void setAmount(Double amount) {
-        this.amount = amount;
-    }
-
-    public UserEntity toEntity() {
+    public static UserEntity toEntity(UserDTO userDTO) {
         UserEntity userEntity = new UserEntity();
-        userEntity.setId(id);
-        userEntity.setName(name);
-        userEntity.setAmount(amount);
-        userEntity.setTransactionName(transactionName);
+        userEntity.setId(userDTO.getId());
+        userEntity.setName(userDTO.getName());
+        userEntity.setAmount(userDTO.getAmount());
+        userEntity.setTransactionName(userDTO.getTransactionName());
 
         return userEntity;
     }
 
-    public UserDTO(Double amount, Integer id, String name, String transactionName) {
-        this.amount = amount;
+    public UserDTO( Integer id, String name, String transactionName, Double amount) {
         this.id = id;
         this.name = name;
         this.transactionName = transactionName;
+        this.amount = amount;
     }
 }
